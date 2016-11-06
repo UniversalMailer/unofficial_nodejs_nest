@@ -164,7 +164,12 @@
                     // convert all data
                     allData = allData.join('');
                     if (allData && typeof allData === 'string') {
-                        allData = JSON.parse(allData);
+												if (allData === 'Too many requests') {
+													allData = {"error": "Too many requests"};
+												}
+												else {
+                        	allData = JSON.parse(allData);
+												}
                     }
                     if (done) {
                         done(allData, response.headers || {});
